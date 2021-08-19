@@ -1,0 +1,31 @@
+# Project: seq_all
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = seq_main.o seq_all.o
+LINKOBJ  = seq_main.o seq_all.o
+LIBS     = -L"d:/Program Files/Dev-Cpp/MinGW64/lib" -L"d:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"d:/Program Files/Dev-Cpp/MinGW64/include" -I"d:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"d:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"d:/Program Files/Dev-Cpp/MinGW64/include" -I"d:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"d:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"d:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = seq_all.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+seq_main.o: seq_main.c
+	$(CC) -c seq_main.c -o seq_main.o $(CFLAGS)
+
+seq_all.o: seq_all.c
+	$(CC) -c seq_all.c -o seq_all.o $(CFLAGS)
